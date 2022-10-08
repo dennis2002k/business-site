@@ -409,6 +409,11 @@ p, li {
 
 /* mobile version control */
 @media (max-width: 991px) {
+
+  .row {
+    --bs-gutter-x: 0rem;
+  }
+
   .title-content, #agency .row {
     display: flex;
     flex-flow: column-reverse;
