@@ -4,6 +4,13 @@ h1 {
   font-size: 50px;
 }
 
+html,body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
 p, li {
   font-family: "Ubuntu", sans-serif;
 
@@ -11,9 +18,6 @@ p, li {
   color: #000;
 }
 
-.row {
-  --bs-gutter-x: 0rem;
-}
 
 /* .container-fluid:nth-child(2), .navbar {
   animation-name: open-up;
