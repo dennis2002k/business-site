@@ -102,7 +102,7 @@ def send_email(email, phone_number, date, time):
     email_message = f"Subject:New Client\n\nDate: {date}\nTime: {time}\n" \
                     f"Client Email: {email}\nClient phone Number: {phone_number}"
 
-    with smtplib.SMTP("smtp.gmail.com") as connection:
+    with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
         connection.starttls()
         connection.login(OWN_EMAIL, OWN_PASSWORD, )
         connection.sendmail(OWN_EMAIL, OWN_EMAIL, email_message)
