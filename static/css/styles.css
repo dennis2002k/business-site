@@ -11,9 +11,7 @@ p, li {
   color: #000;
 }
 
-.row {
-  --bs-gutter-x: 0rem;
-}
+
 
 /* .container-fluid:nth-child(2), .navbar {
   animation-name: open-up;
@@ -408,7 +406,7 @@ p, li {
 
 
 /* mobile version control */
-@media (max-width: 976px) {
+@media (max-width: 991px) {
   .title-content, #agency .row {
     display: flex;
     flex-flow: column-reverse;
