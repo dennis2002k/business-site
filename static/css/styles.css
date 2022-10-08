@@ -415,8 +415,12 @@ p, li {
 /* mobile version control */
 @media (max-width: 991px) {
 
-  .row {
-    --bs-gutter-x: 0rem;
+  #sd {
+    padding-top: 15%;
+  }
+
+  .sd-col {
+    padding: 4% 4%;
   }
 
   .title-content, #agency .row {
