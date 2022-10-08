@@ -11,7 +11,9 @@ p, li {
   color: #000;
 }
 
-
+.row {
+  --bs-gutter-x: 0rem;
+}
 
 /* .container-fluid:nth-child(2), .navbar {
   animation-name: open-up;
