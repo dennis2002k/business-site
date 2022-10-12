@@ -105,7 +105,7 @@ def send_email(email, phone_number, date, time):
     with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
         connection.starttls()
         connection.login(OWN_EMAIL, OWN_PASSWORD, )
-        connection.sendmail(OWN_EMAIL, OWN_EMAIL, email_message)
+        connection.sendmail(OWN_EMAIL, "mgmedia.adv@gmail.com", email_message)
 
 
 # book meeting and send email
