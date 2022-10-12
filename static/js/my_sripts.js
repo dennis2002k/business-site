@@ -40,10 +40,62 @@ function animate(target, animation) {
  animate(".talk-animation:nth-child(1)", "animation")
  animate(".talk-animation:nth-child(2)", "animation")
 
+ const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+ function disable_impossible_dates() {
+    //disable setting meeting in the past
+    $(".rd-back").removeAttr("disabled");
+    const d = new Date();
+    day = d.getDate();
+    month = d.getMonth();
+    year = d.getFullYear();
+
+    date = months[month] + " " + year;
+    console.log(typeof date)
+
+    // disable bak month
+    if (date == $(".rd-month-label").text()) {
+        $(".rd-back").attr("disabled", "disabled");
+        // disable old days
+        $(".rd-day-body").each(function() {
+            // $(this).removeClass("rd-day-selected")
+
+            if ((Number($(this).text()) < day && !($(this).hasClass("rd-day-next-month"))) || $(this).hasClass("rd-day-prev-month")) {
+                console.log("new here");
+                $(this).css("color", "#ccc")
+                $(this).css("pointer-events","none");
+                // $(this).attr("disabled", "disabled")
+            }
+        })
+    }
+}
+
 
 
 
 $(document).ready(function () {
+
+    disable_impossible_dates();
+
+    $(".rd-date").click(function() {
+        console.log("detext")
+        disable_impossible_dates();
+    })
+
+    $(".rd-back").click(function() {
+
+        const d = new Date();
+        day = d.getDate();
+        $(".rd-day-body").each(function() {
+            $(this).removeClass("rd-day-selected")
+
+            if (Number($(this).text()) == day && !($(this).hasClass("rd-day-prev-month"))) {
+                $(this).addClass("rd-day-selected")
+                $(this).click();
+                return
+            }
+        })
+    })
 
     // popover
     var popover = new bootstrap.Popover(document.querySelector('.time-popover'), {
