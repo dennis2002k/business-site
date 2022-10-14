@@ -8,15 +8,16 @@ from wtforms.validators import DataRequired, Email, Length
 import datetime
 from flask_sqlalchemy import SQLAlchemy
 import smtplib
+import os
 
 OWN_EMAIL = "dkritsas2002@gmail.com"
 OWN_PASSWORD = "wreydhyuxotnykil"
 
 app = Flask(__name__)
-app.secret_key = "sth here"
+app.secret_key = os.environ.get("SECRET_KEY", "sth here")
 Bootstrap(app)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///meetings.db"
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL", "sqlite:///meetings.db")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
@@ -105,7 +106,7 @@ def send_email(email, phone_number, date, time):
     with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
         connection.starttls()
         connection.login(OWN_EMAIL, OWN_PASSWORD, )
-        connection.sendmail(OWN_EMAIL, "mgmedia.adv@gmail.com", email_message)
+        connection.sendmail(OWN_EMAIL, OWN_EMAIL, email_message)
 
 
 # book meeting and send email
